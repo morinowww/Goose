@@ -4,20 +4,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import others.Button;
+import utilities.Button;
 
 public class SettingsFrame extends FrameLayout implements ActionListener{
 
     Button button_prev;
-    Button button_addCustom;
 
     SettingsFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
-
-        button_addCustom = new Button("Add Custom", 25);
-        button_addCustom.addActionListener(this);
         //Buttons
 
         //Panels
@@ -25,12 +21,13 @@ public class SettingsFrame extends FrameLayout implements ActionListener{
         filler1.setBackground(new Color(28,53,94));
         JPanel filler2 = new JPanel();
         filler2.setBackground(new Color(28,53,94));
-
+        JPanel filler3 = new JPanel();
+        filler3.setBackground(new Color(28,53,94));
 
         pan_title.add(button_prev);
         pan_title.add(filler1);
         pan_title.add(filler2);
-        pan_title.add(button_addCustom);    
+        pan_title.add(filler3);    
 
         //Framess
         this.setTitle("Goose - Settings");

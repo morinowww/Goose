@@ -1,16 +1,14 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.GridLayout;
 
-import others.Button;
+import utilities.Button;
+
+import java.awt.GridLayout;
 
 public class MenuFrame extends FrameLayout implements ActionListener{
 
-    Button button_newTransact;
-    Button button_inventory;
-    Button button_logs;
-    Button button_settings;
-    Button button_exit;
+    Button button_newTransact, button_inventory, button_logs,
+    button_help, button_settings, button_exit;
 
     MenuFrame(){
         //BUTTONS
@@ -22,6 +20,12 @@ public class MenuFrame extends FrameLayout implements ActionListener{
 
         button_logs = new Button("Logs", 25);
         button_logs.addActionListener(this);
+
+        button_logs = new Button("Logs", 25);
+        button_logs.addActionListener(this);
+
+        button_help = new Button("Help", 25);
+        button_help.addActionListener(this);
 
         button_settings = new Button("Settings", 25);
         button_settings.addActionListener(this);
@@ -35,6 +39,7 @@ public class MenuFrame extends FrameLayout implements ActionListener{
         pan_menu.add(button_newTransact);
         pan_menu.add(button_inventory);
         pan_menu.add(button_logs);
+        pan_menu.add(button_help);
         pan_menu.add(button_settings);
         pan_menu.add(button_exit);
         //PANELS
@@ -58,6 +63,9 @@ public class MenuFrame extends FrameLayout implements ActionListener{
         }
         if (e.getSource() == button_logs){
             new LogsFrame();
+        }
+        if (e.getSource() == button_help){
+            new HelpFrame();
         }
         if (e.getSource() == button_settings){
             new SettingsFrame();

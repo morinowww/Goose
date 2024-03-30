@@ -1,9 +1,8 @@
-package others;
+package utilities;
 
 import java.awt.Font;
 
 import javax.swing.JButton;
-
 public class Button extends JButton {
     public Button(String text, int font_size){
         this.setFocusable(false);

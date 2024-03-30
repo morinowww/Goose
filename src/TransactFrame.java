@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import others.Button;
+import sub_frames.TransactFrame_AddCustom;
+import utilities.Button;
 
 public class TransactFrame extends FrameLayout implements ActionListener{
 
@@ -43,6 +44,9 @@ public class TransactFrame extends FrameLayout implements ActionListener{
         if (e.getSource() == button_prev){
             this.dispose();
             new MenuFrame();
+        }
+        if (e.getSource() == button_addCustom){
+            new TransactFrame_AddCustom();
         }
     }
 }

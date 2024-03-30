@@ -6,14 +6,18 @@ import javax.swing.JPanel;
 
 import utilities.Button;
 
-public class InventoryFrame extends FrameLayout implements ActionListener{
+public class HelpFrame extends FrameLayout implements ActionListener{
 
     Button button_prev;
+    Button button_addCustom;
 
-    InventoryFrame(){ 
+    HelpFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
+
+        button_addCustom = new Button("Add Custom", 25);
+        button_addCustom.addActionListener(this);
         //Buttons
 
         //Panels
@@ -27,10 +31,10 @@ public class InventoryFrame extends FrameLayout implements ActionListener{
         pan_title.add(button_prev);
         pan_title.add(filler1);
         pan_title.add(filler2);
-        pan_title.add(filler3);
+        pan_title.add(filler3);    
 
         //Framess
-        this.setTitle("Goose - Inventory");
+        this.setTitle("Goose - Help");
         this.setVisible(true);
         //Frames
 
