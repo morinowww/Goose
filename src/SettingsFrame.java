@@ -6,12 +6,12 @@ import javax.swing.JPanel;
 
 import others.Button;
 
-public class TransactFrame extends FrameLayout implements ActionListener{
+public class SettingsFrame extends FrameLayout implements ActionListener{
 
     Button button_prev;
     Button button_addCustom;
 
-    TransactFrame(){ 
+    SettingsFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
@@ -33,7 +33,7 @@ public class TransactFrame extends FrameLayout implements ActionListener{
         pan_title.add(button_addCustom);    
 
         //Framess
-        this.setTitle("Goose - New Transaction");
+        this.setTitle("Goose - Settings");
         this.setVisible(true);
         //Frames
 
