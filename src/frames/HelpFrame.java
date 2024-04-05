@@ -4,16 +4,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import layout.FrameLayout;
 import utilities.Button;
 
-public class LogsFrame extends FrameLayout implements ActionListener{
+public class HelpFrame extends FrameLayout implements ActionListener{
 
-    Button button_prev;
+    private Button button_prev, button_addCustom;
 
-    LogsFrame(){ 
+    HelpFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
+
+        button_addCustom = new Button("Add Custom", 25);
+        button_addCustom.addActionListener(this);
         //Buttons
 
         //Panels
@@ -30,7 +34,7 @@ public class LogsFrame extends FrameLayout implements ActionListener{
         pan_title.add(filler3);    
 
         //Framess
-        this.setTitle("Goose - Logs");
+        this.setTitle("Goose - Help");
         this.setVisible(true);
         //Frames
 

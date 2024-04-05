@@ -1,3 +1,4 @@
+package layout;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Color;
@@ -16,7 +17,7 @@ public class FrameLayout extends JFrame{
 
     Font buttonFont = new Font("Arial", Font.BOLD, 25);
 
-    FrameLayout(){
+    public FrameLayout(){
         //FONTS
         //FONTS
 

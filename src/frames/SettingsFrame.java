@@ -4,13 +4,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import layout.FrameLayout;
 import utilities.Button;
 
-public class InventoryFrame extends FrameLayout implements ActionListener{
+public class SettingsFrame extends FrameLayout implements ActionListener{
 
-    Button button_prev;
+    private Button button_prev;
 
-    InventoryFrame(){ 
+    SettingsFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
@@ -27,10 +28,10 @@ public class InventoryFrame extends FrameLayout implements ActionListener{
         pan_title.add(button_prev);
         pan_title.add(filler1);
         pan_title.add(filler2);
-        pan_title.add(filler3);
+        pan_title.add(filler3);    
 
         //Framess
-        this.setTitle("Goose - Inventory");
+        this.setTitle("Goose - Settings");
         this.setVisible(true);
         //Frames
 

@@ -1,13 +1,14 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import layout.FrameLayout;
 import utilities.Button;
 
 import java.awt.GridLayout;
 
 public class MenuFrame extends FrameLayout implements ActionListener{
 
-    Button button_newTransact, button_inventory, button_logs,
+    private Button button_newTransact, button_inventory, button_logs,
     button_help, button_settings, button_exit;
 
     MenuFrame(){
@@ -51,23 +52,23 @@ public class MenuFrame extends FrameLayout implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
+        this.dispose();
         if (e.getSource() == button_exit){
             System.exit(0);
         }
-        this.dispose();
-        if (e.getSource() == button_newTransact){
+        else if (e.getSource() == button_newTransact){
             new TransactFrame();
         }
-        if (e.getSource() == button_inventory){
+        else if (e.getSource() == button_inventory){
             new InventoryFrame();
         }
-        if (e.getSource() == button_logs){
+        else if (e.getSource() == button_logs){
             new LogsFrame();
         }
-        if (e.getSource() == button_help){
+        else if (e.getSource() == button_help){
             new HelpFrame();
         }
-        if (e.getSource() == button_settings){
+        else if (e.getSource() == button_settings){
             new SettingsFrame();
         }
     }

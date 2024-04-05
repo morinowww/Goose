@@ -1,30 +1,32 @@
-package sub_frames;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.text.NumberFormat;
+
 import utilities.Button;
 import utilities.Custom_TextField;
 import utilities.Label;
 
-public class TransactFrame_AddCustom extends JFrame implements ActionListener{
+public class S_AddCustomFrame extends JFrame implements ActionListener{
     protected JPanel pan_title = new JPanel();
     protected JPanel pan_menu = new JPanel();
     protected JPanel pan_sideWest = new JPanel();
     protected JPanel pan_sideEast = new JPanel();
     protected JPanel pan_footer = new JPanel();
 
-    Button button_cancel, button_add;
-
-    public TransactFrame_AddCustom(){
+    private Button button_cancel, button_add;
+    
+    public S_AddCustomFrame(){
         //BUTTONS
         button_cancel = new Button("Back", 25);
         button_cancel.addActionListener(this);
@@ -49,8 +51,22 @@ public class TransactFrame_AddCustom extends JFrame implements ActionListener{
         pan_menu.setBackground(new Color(28,53,94));
         pan_menu.setPreferredSize(new Dimension(50, 100));
         pan_menu.setLayout(new GridBagLayout());
-        pan_menu.add(new Label("Product Name: ", 16));
-        pan_menu.add(new Custom_TextField("Enter product name here", 16));
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        constraints.insets = new Insets(5,5,5,5);
+        pan_menu.add(new Label("Product Name: ", 16), constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        pan_menu.add(new Custom_TextField("Enter product name here", 16, 0), constraints);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        pan_menu.add(new Label("Product Price: ", 16), constraints);
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        pan_menu.add(new Custom_TextField("Enter product price here", 16, 1), constraints);
 
         pan_sideWest.setBackground(new Color(28,53,94));
         pan_sideWest.setPreferredSize(new Dimension(50, 100));

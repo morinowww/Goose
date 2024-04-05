@@ -4,21 +4,20 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import sub_frames.TransactFrame_AddCustom;
+import layout.FrameLayout;
 import utilities.Button;
 
-public class TransactFrame extends FrameLayout implements ActionListener{
+public class InventoryFrame extends FrameLayout implements ActionListener{
 
-    Button button_prev;
-    Button button_addCustom;
+    private Button button_prev, button_addProduct;
 
-    TransactFrame(){ 
+    InventoryFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
 
-        button_addCustom = new Button("Add Custom", 25);
-        button_addCustom.addActionListener(this);
+        button_addProduct = new Button("Add Product", 25);
+        button_addProduct.addActionListener(this);
         //Buttons
 
         //Panels
@@ -26,15 +25,16 @@ public class TransactFrame extends FrameLayout implements ActionListener{
         filler1.setBackground(new Color(28,53,94));
         JPanel filler2 = new JPanel();
         filler2.setBackground(new Color(28,53,94));
-
+        JPanel filler3 = new JPanel();
+        filler3.setBackground(new Color(28,53,94));
 
         pan_title.add(button_prev);
         pan_title.add(filler1);
         pan_title.add(filler2);
-        pan_title.add(button_addCustom);    
+        pan_title.add(button_addProduct);
 
         //Framess
-        this.setTitle("Goose - New Transaction");
+        this.setTitle("Goose - Inventory");
         this.setVisible(true);
         //Frames
 
@@ -45,8 +45,8 @@ public class TransactFrame extends FrameLayout implements ActionListener{
             this.dispose();
             new MenuFrame();
         }
-        if (e.getSource() == button_addCustom){
-            new TransactFrame_AddCustom();
+        else if (e.getSource() == button_addProduct){
+            new S_AddCustomFrame();
         }
     }
 }
