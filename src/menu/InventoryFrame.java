@@ -1,17 +1,21 @@
+package menu;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import layout.FrameLayout;
+import menu.layout.FrameLayout;
+
 import utilities.Button;
+import java.awt.GridLayout;
 
 public class InventoryFrame extends FrameLayout implements ActionListener{
 
     private Button button_prev, button_addProduct;
 
-    InventoryFrame(){ 
+    public InventoryFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
@@ -32,8 +36,10 @@ public class InventoryFrame extends FrameLayout implements ActionListener{
         pan_title.add(filler1);
         pan_title.add(filler2);
         pan_title.add(button_addProduct);
+        pan_menu.setLayout(new GridLayout(4, 4, 0, 0));
+        
 
-        //Framess
+        //Frames
         this.setTitle("Goose - Inventory");
         this.setVisible(true);
         //Frames

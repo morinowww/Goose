@@ -1,17 +1,20 @@
+package menu;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import layout.FrameLayout;
+import menu.layout.FrameLayout;
+
 import utilities.Button;
 
-public class SettingsFrame extends FrameLayout implements ActionListener{
+public class LogsFrame extends FrameLayout implements ActionListener{
 
     private Button button_prev;
 
-    SettingsFrame(){ 
+    public LogsFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
@@ -31,7 +34,7 @@ public class SettingsFrame extends FrameLayout implements ActionListener{
         pan_title.add(filler3);    
 
         //Framess
-        this.setTitle("Goose - Settings");
+        this.setTitle("Goose - Logs");
         this.setVisible(true);
         //Frames
 

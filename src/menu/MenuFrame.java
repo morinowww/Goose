@@ -1,17 +1,20 @@
+package menu;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GridLayout;
 
-import layout.FrameLayout;
+import menu.layout.FrameLayout;
+
 import utilities.Button;
 
-import java.awt.GridLayout;
 
 public class MenuFrame extends FrameLayout implements ActionListener{
 
     private Button button_newTransact, button_inventory, button_logs,
     button_help, button_settings, button_exit;
 
-    MenuFrame(){
+    public MenuFrame(){
         //BUTTONS
         button_newTransact = new Button("New Transaction", 25);
         button_newTransact.addActionListener(this);

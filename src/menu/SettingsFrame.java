@@ -1,23 +1,22 @@
+package menu;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
 
-import layout.FrameLayout;
+import menu.layout.FrameLayout;
+
 import utilities.Button;
 
-public class HelpFrame extends FrameLayout implements ActionListener{
+public class SettingsFrame extends FrameLayout implements ActionListener{
 
-    private Button button_prev, button_addCustom;
+    private Button button_prev;
 
-    HelpFrame(){ 
+    public SettingsFrame(){ 
         //Buttons
         button_prev = new Button("Back", 25);
         button_prev.addActionListener(this);
-
-        button_addCustom = new Button("Add Custom", 25);
-        button_addCustom.addActionListener(this);
         //Buttons
 
         //Panels
@@ -33,8 +32,8 @@ public class HelpFrame extends FrameLayout implements ActionListener{
         pan_title.add(filler2);
         pan_title.add(filler3);    
 
-        //Framess
-        this.setTitle("Goose - Help");
+        //Frames
+        this.setTitle("Goose - Settings");
         this.setVisible(true);
         //Frames
 

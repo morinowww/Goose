@@ -1,4 +1,5 @@
-package layout;
+package menu.layout;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Color;

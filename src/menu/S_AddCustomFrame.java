@@ -1,0 +1,169 @@
+package menu;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.GridBagLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import utilities.Button;
+import utilities.Custom_TextField;
+import utilities.Label;
+
+public class S_AddCustomFrame extends JFrame implements ActionListener{
+    protected JPanel pan_title = new JPanel();
+    protected JPanel pan_menu = new JPanel();
+    protected JPanel pan_sideWest = new JPanel();
+    protected JPanel pan_sideEast = new JPanel();
+    protected JPanel pan_footer = new JPanel();
+
+    private Button button_cancel, button_add;
+    private final JPanel panel = new JPanel();
+
+    Custom_TextField prodField_name;
+    Custom_TextField prodField_desc;
+    Custom_TextField prodField_price;
+    
+    public S_AddCustomFrame(){
+        //BUTTONS
+        button_cancel = new Button("Back", 25);
+        button_cancel.addActionListener(this);
+        button_add = new Button("Add", 25);
+        button_add.addActionListener(this);
+        //BUTTONS
+
+
+        //PANEL
+        JPanel filler1 = new JPanel();
+        filler1.setBackground(new Color(28,53,94));
+        JPanel filler2 = new JPanel();
+        filler2.setBackground(new Color(28,53,94));
+
+        pan_title.setBackground(new Color(28,53,94));
+        pan_title.setPreferredSize(new Dimension(100, 50));
+        pan_title.setLayout(new GridLayout(1, 4));
+        pan_title.add(button_cancel);
+        pan_title.add(filler1);
+        pan_title.add(filler2);
+
+        pan_menu.setBackground(new Color(28,53,94));
+        pan_menu.setPreferredSize(new Dimension(50, 100));
+        GridBagLayout gbl_pan_menu = new GridBagLayout();
+        gbl_pan_menu.rowWeights = new double[]{1.0, 0.0, 0.0};
+        gbl_pan_menu.columnWeights = new double[]{1.0, 0.0};
+        pan_menu.setLayout(gbl_pan_menu);
+        
+        GridBagConstraints picture_panel = new GridBagConstraints();
+        picture_panel.gridwidth = 2;
+        picture_panel.insets = new Insets(0, 0, 0, 0);
+        picture_panel.fill = GridBagConstraints.BOTH;
+        picture_panel.gridx = 0;
+        picture_panel.gridy = 0;
+        pan_menu.add(panel, picture_panel);
+        
+        GridBagConstraints constraints1 = new GridBagConstraints();
+        constraints1.gridx = 0;
+        constraints1.gridy = 1;
+        constraints1.anchor = GridBagConstraints.LINE_START;
+        constraints1.insets = new Insets(5,5,5,5);
+        pan_menu.add(new Label("Product Name: ", 16), constraints1);
+        
+        GridBagConstraints constraints2 = new GridBagConstraints();
+        constraints2.anchor = GridBagConstraints.WEST;
+        constraints2.gridx = 1;
+        constraints2.gridy = 1;
+        constraints2.insets = new Insets(5, 5, 5, 0);
+        prodField_name = new Custom_TextField("Enter product name here", 16, 20, "STRING");
+        pan_menu.add(prodField_name, constraints2);
+        
+        GridBagConstraints constraints5 = new GridBagConstraints();
+        constraints5.gridx = 0;
+        constraints5.gridy = 2;
+        constraints5.anchor = GridBagConstraints.LINE_START;
+        constraints5.insets = new Insets(5, 5, 5, 5);
+        pan_menu.add(new Label("Product Description: ", 16), constraints5);
+        
+        GridBagConstraints constraints6 = new GridBagConstraints();
+        constraints6.gridx = 1;
+        constraints6.gridy = 2;
+        constraints6.anchor = GridBagConstraints.LINE_START;
+        constraints6.insets = new Insets(5, 5, 5, 0);
+        prodField_desc = new Custom_TextField("Enter product description here", 16, 20, "STRING");
+        pan_menu.add(prodField_desc, constraints6);
+        
+        GridBagConstraints constraints3 = new GridBagConstraints();
+        constraints3.gridx = 0;
+        constraints3.gridy = 3;
+        constraints3.anchor = GridBagConstraints.LINE_START;
+        constraints3.insets = new Insets(5, 5, 5, 5);
+        pan_menu.add(new Label("Product Price: ", 16), constraints3);
+        
+        GridBagConstraints constraints4 = new GridBagConstraints();
+        constraints4.gridx = 1;
+        constraints4.gridy = 3;
+        constraints4.anchor = GridBagConstraints.LINE_START;
+        constraints4.insets = new Insets(5, 5, 5, 0);
+        prodField_price = new Custom_TextField("Enter product price here", 16, 20, "DOUBLE");
+        pan_menu.add(prodField_price, constraints4);
+
+        pan_sideWest.setBackground(new Color(28,53,94));
+        pan_sideWest.setPreferredSize(new Dimension(50, 100));
+
+        pan_sideEast.setBackground(new Color(28,53,94));
+        pan_sideEast.setPreferredSize(new Dimension(50, 100));
+
+        pan_footer.setBackground(new Color(28,53,94));
+        pan_footer.setPreferredSize(new Dimension(100, 50)); 
+        pan_footer.setLayout(new BorderLayout());
+        pan_footer.add(button_add);       
+        //PANEL
+
+
+        //FRAMES
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setSize(600, 600);
+        this.setUndecorated(false);
+        this.setResizable(false);
+        getContentPane().setLayout(new BorderLayout(10, 10));
+        this.getContentPane().setBackground(new Color(28,53,94));    
+        this.setTitle("Goose - Add Custom");
+
+        getContentPane().add(pan_title, BorderLayout.NORTH);
+        getContentPane().add(pan_menu, BorderLayout.CENTER);
+        getContentPane().add(pan_sideWest, BorderLayout.WEST);
+        getContentPane().add(pan_sideEast, BorderLayout.EAST);
+        getContentPane().add(pan_footer, BorderLayout.SOUTH);
+        //FRAMESS
+
+        this.setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if (e.getSource() == button_cancel){
+            this.dispose();
+        }
+        else if (e.getSource() == button_add) {
+        	System.out.print("Printing");
+            if (prodField_name.getText().isBlank()){
+                JOptionPane.showMessageDialog(null,
+                "Error: Please enter product name", "Error Message",
+                JOptionPane.ERROR_MESSAGE);
+            }
+            if (prodField_price.getText().isBlank() || Integer.parseInt(prodField_price.getText()) <= 0){
+                JOptionPane.showMessageDialog(null,
+                "Error: Please enter a price bigger than P0", "Error Message",
+                JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    
+}
