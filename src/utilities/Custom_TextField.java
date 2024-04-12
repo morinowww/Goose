@@ -19,7 +19,7 @@ public class Custom_TextField extends JFormattedTextField{
             this.getBorder(), BorderFactory.createEmptyBorder(0,5,0,5)
         ));
         TextPrompt prompt = new TextPrompt(textFieldd_text, this);
-        prompt.setHorizontalAlignment(JLabel.CENTER);
+        prompt.setHorizontalAlignment(JLabel.LEFT);
         prompt.changeStyle(Font.ITALIC);
         prompt.setForeground( Color.gray );
         if (FORMAT == "DOUBLE"){
