@@ -11,17 +11,16 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import products.Product;
 import utilities.SelectionBox;
 import utilities.Button;
 import utilities.Custom_TextField;
 import utilities.Label;
-import utilities.SelectionBox;
 
 public class S_AddCustomFrame extends JFrame implements ActionListener{
     protected JPanel pan_title = new JPanel();
@@ -33,9 +32,12 @@ public class S_AddCustomFrame extends JFrame implements ActionListener{
     private Button button_cancel, button_add;
     private final JPanel panel = new JPanel();
 
-    Custom_TextField prodField_name;
-    Custom_TextField prodField_desc;
-    Custom_TextField prodField_price;
+    private Custom_TextField prodField_name;
+    private String _productTypes[] = {"Canned and Preserved Goods", "Fruits and Vegetables", "Dairy, Meat, and Seafood", "Condiments and Spices",
+                                    "Snacks", "Beverages", "Personal Care", "Health Care", "Others"};
+    private JComboBox prodType = new JComboBox(_productTypes);
+    private Custom_TextField prodField_desc;
+    private Custom_TextField prodField_price;
     
     public S_AddCustomFrame(){
         //BUTTONS
@@ -101,15 +103,12 @@ public class S_AddCustomFrame extends JFrame implements ActionListener{
         constraints4.insets = new Insets(5, 5, 5, 5);
         constraints4.gridx = 1;
         constraints4.gridy = 2;
-        String productTypes[] = {"Canned and Preserved Goods", "Fruits and Vegetables", "Dairy, Meat, and Seafood", "Condiments and Spices",
-        "Snacks", "Beverages", "Personal Care", "Health Care", "Others"};
-        JComboBox comboBox = new JComboBox(productTypes);
-        comboBox.setFocusable(false);
-        comboBox.setRenderer(new SelectionBox(5, "Select Product Type"));
-        comboBox.setBackground(Color.WHITE);
-        comboBox.setSelectedIndex(-1);
-        comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
-        pan_menu.add(comboBox, constraints4);
+        prodType.setFocusable(false);
+        prodType.setRenderer(new SelectionBox(5, "Select Product Type"));
+        prodType.setBackground(Color.WHITE);
+        prodType.setSelectedIndex(-1);
+        prodType.setFont(new Font("Arial", Font.PLAIN, 16));
+        pan_menu.add(prodType, constraints4);
         
         GridBagConstraints constraints5 = new GridBagConstraints();
         constraints5.gridx = 0;
@@ -174,8 +173,22 @@ public class S_AddCustomFrame extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e){
+        
         if (e.getSource() == button_cancel){
-            this.dispose();
+            if (!prodField_name.getText().isBlank() || !prodField_price.getText().isBlank()
+            || !prodField_desc.getText().isBlank() || prodType.getSelectedIndex() != -1){
+                int confirmation_back = JOptionPane.showConfirmDialog(null, "Are you sure you want to go back? Changes will not be saved", "", 
+                JOptionPane.YES_NO_OPTION);
+                switch (confirmation_back){
+                    case JOptionPane.NO_OPTION:
+                        return;
+                    case JOptionPane.YES_OPTION:
+                        this.dispose();
+                        break;
+                }
+            }
+            else 
+                this.dispose();
         }
         else if (e.getSource() == button_add) {
             String productName = prodField_name.getText();
@@ -187,17 +200,33 @@ public class S_AddCustomFrame extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            if (productPrice.isBlank() || Integer.parseInt(prodField_price.getText()) <= 0){
+            if (productPrice.isBlank() || Double.parseDouble(prodField_price.getText()) <= 0){
                 JOptionPane.showMessageDialog(null,
                 "Error: Please enter a price bigger than P0", "Error Message",
                 JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            {
-                System.out.println("Adding " + productName + " with price of " + productPrice + "\n" 
-                + "descibed as " + productDesc);
-                System.out.println("Lebron");
+            if (prodType.getSelectedIndex() == -1){
+                JOptionPane.showMessageDialog(null,
+                "Error: Please select a product type", "Error Message",
+                JOptionPane.ERROR_MESSAGE);
+                return;
             }
+            String productType = prodType.getSelectedItem().toString();
+            int confirmation_product = JOptionPane.showConfirmDialog(null, 
+                        "Are the following information correct?\nProduct Name: " + productName + "\n" + 
+                        "Product Type: " + productType + "\n" + "Produce Description: " + productDesc + "\n" +
+                        "Product Price: P"  + String.format("%.2f", Double.parseDouble(productPrice)),
+                        "", JOptionPane.YES_NO_OPTION);
+            switch (confirmation_product) {
+                case JOptionPane.YES_OPTION:
+                    Product product = new Product(productPrice, productType, productDesc, confirmation_product);
+                    this.dispose();
+                    break;
+                case JOptionPane.NO_OPTION:
+                    return;
+            }
+
         }
     }
 

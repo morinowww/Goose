@@ -1,5 +1,6 @@
 package utilities;
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
@@ -26,8 +27,10 @@ public class SelectionBox  extends JLabel implements ListCellRenderer {
     	boolean isSelected, boolean cellHasFocus){
         JLabel renderer = (JLabel) defaultRenderer.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         renderer.setBorder(insetBorder);
-        if (index == -1 && value == null) 
-        	renderer.setText(_title);
+        if (index == -1 && value == null){ 
+            renderer.setFont(new Font("Arial", Font.ITALIC, 16));
+            renderer.setText(_title);
+        }
         else renderer.setText(value.toString());        
         return renderer;
     }
